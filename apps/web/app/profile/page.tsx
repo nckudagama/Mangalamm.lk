@@ -20,24 +20,27 @@ type P = {
   profile_complete_pct?: number;
 };
 
+type Detail = { label: string; value?: string };
+type Signal = { label: string; items?: string[] };
+
 export default function Profile() {
   const [p, setP] = useState<P>({});
   useEffect(() => {
     api<P>("/api/v1/profiles/me").then(setP).catch(() => undefined);
   }, []);
 
-  const details: Array<[string, string | undefined]> = [
-    ["Location", p.location],
-    ["Education", p.education],
-    ["Profession", p.profession],
-    ["Marital status", p.marital_status],
-    ["Gender", p.gender],
+  const details: Detail[] = [
+    { label: "Location", value: p.location },
+    { label: "Education", value: p.education },
+    { label: "Profession", value: p.profession },
+    { label: "Marital status", value: p.marital_status },
+    { label: "Gender", value: p.gender },
   ];
 
-  const signals: Array<[string, string[] | undefined]> = [
-    ["Interests", p.interests],
-    ["Lifestyle", p.lifestyle],
-    ["Values", p.values],
+  const signals: Signal[] = [
+    { label: "Interests", items: p.interests },
+    { label: "Lifestyle", items: p.lifestyle },
+    { label: "Values", items: p.values },
   ];
 
   return (
@@ -69,10 +72,10 @@ export default function Profile() {
               <h2 className="mt-3 text-3xl">The person behind the profile.</h2>
 
               <div className="font-sans mt-6 grid gap-3 sm:grid-cols-2">
-                {details.map(([label, value]) => (
-                  <div key={label} className="rounded-2xl bg-[#fbf7f2] p-4">
-                    <span className="text-xs text-[#756b69]">{label}</span>
-                    <p className="mt-1">{value || "Not added yet"}</p>
+                {details.map((detail) => (
+                  <div key={detail.label} className="rounded-2xl bg-[#fbf7f2] p-4">
+                    <span className="text-xs text-[#756b69]">{detail.label}</span>
+                    <p className="mt-1">{detail.value || "Not added yet"}</p>
                   </div>
                 ))}
               </div>
@@ -85,10 +88,12 @@ export default function Profile() {
             <div className="rounded-[28px] border border-[#dbc8bd] bg-[#efe3d7] p-7">
               <p className="font-sans text-xs uppercase tracking-[.2em] text-[#a6535e]">Your signals</p>
               <div className="mt-4 grid gap-4 sm:grid-cols-3">
-                {signals.map(([label, items]) => (
-                  <div key={label}>
-                    <p className="font-sans text-xs text-[#756b69]">{label}</p>
-                    <p className="mt-2 text-sm">{items?.join(" · ") || "Not added yet"}</p>
+                {signals.map((signal) => (
+                  <div key={signal.label}>
+                    <p className="font-sans text-xs text-[#756b69]">{signal.label}</p>
+                    <p className="mt-2 text-sm">
+                      {signal.items?.join(" · ") || "Not added yet"}
+                    </p>
                   </div>
                 ))}
               </div>
