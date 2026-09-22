@@ -42,6 +42,16 @@ class ProfileIn(BaseModel):
     preferred_age_min: Optional[int] = Field(default=None, ge=18, le=100)
     preferred_age_max: Optional[int] = Field(default=None, ge=18, le=100)
 
+    @field_validator("date_of_birth")
+    @classmethod
+    def adult_only(cls, value: date | None):
+        if value is not None:
+            today = date.today()
+            age = today.year - value.year - ((today.month, today.day) < (value.month, value.day))
+            if age < 18:
+                raise ValueError("Mangalamm profiles are for adults 18+")
+        return value
+
     @field_validator("preferred_age_max")
     @classmethod
     def max_age_is_valid(cls, value: int | None, info):
