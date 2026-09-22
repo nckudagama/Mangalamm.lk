@@ -7,11 +7,15 @@ button,a,input,select,textarea{font:inherit}
 button,a{-webkit-tap-highlight-color:transparent}
 a{color:inherit;text-decoration:none}
 .sans{font-family:Arial,Helvetica,sans-serif}
-.grain{background-image:radial-gradient(rgba(60,30,20,.045) 1px,transparent 1px);background-size:5px 5px}
-.shadow-soft{box-shadow:0 20px 60px rgba(63,37,31,.11)}
-.field{width:100%;min-height:48px;border:1px solid #e3d5cd;border-radius:18px;background:rgba(255,255,255,.7);padding:13px 16px;font-family:Arial,Helvetica,sans-serif;font-size:14px;outline:none;transition:.2s}
-.field:focus{border-color:var(--rose);box-shadow:0 0 0 3px rgba(166,83,94,.10)}
+.grain{background-color:var(--paper);background-image:radial-gradient(rgba(60,30,20,.038) 1px,transparent 1px);background-size:6px 6px}
+.shadow-soft{box-shadow:0 20px 60px rgba(63,37,31,.09)}
+.field{width:100%;min-height:50px;border:1px solid #e3d5cd;border-radius:18px;background:rgba(255,255,255,.78);padding:13px 16px;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
+.field::placeholder{color:#a49a96}
+.field:focus{border-color:var(--rose);background:white;box-shadow:0 0 0 4px rgba(166,83,94,.09)}
+select.field{appearance:none}
+textarea.field{padding-top:14px;resize:vertical}
+button:disabled{cursor:not-allowed}
+::selection{background:rgba(166,83,94,.18)}
 .safe-top{padding-top:env(safe-area-inset-top)}
 .safe-bottom{padding-bottom:env(safe-area-inset-bottom)}
-::selection{background:rgba(166,83,94,.18)}
-@media (max-width:640px){.shadow-soft{box-shadow:0 14px 36px rgba(63,37,31,.09)}}
+@media (max-width:640px){.shadow-soft{box-shadow:0 14px 36px rgba(63,37,31,.08)}}
