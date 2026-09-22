@@ -1,0 +1,1 @@
+{"name":"mangalamm","private":true,"scripts":{"dev":"npm run dev --workspace @mangalamm/web","build":"npm run build --workspace @mangalamm/web"},"workspaces":["apps/web"]}
