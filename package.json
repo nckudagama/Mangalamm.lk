@@ -1,1 +1,16 @@
-{"name":"mangalamm","private":true,"scripts":{"dev":"npm run dev --workspace @mangalamm/web","build":"npm run build --workspace @mangalamm/web"},"workspaces":["apps/web"]}
+{
+  "name": "mangalamm",
+  "private": true,
+  "packageManager": "npm@11",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace @mangalamm/web",
+    "build": "npm run build --workspace @mangalamm/web",
+    "start": "npm run start --workspace @mangalamm/web"
+  },
+  "workspaces": [
+    "apps/web"
+  ]
+}
