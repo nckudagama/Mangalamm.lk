@@ -1,0 +1,2 @@
+@import "tailwindcss";
+:root{--ink:#231f20;--muted:#756b69;--paper:#fbf7f2;--rose:#a6535e;--rose2:#d99596;--cream:#efe3d7;--line:#e6d8d0}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,"Times New Roman",serif}.sans{font-family:Arial,Helvetica,sans-serif}.grain{background-image:radial-gradient(rgba(60,30,20,.05) 1px,transparent 1px);background-size:5px 5px}.shadow-soft{box-shadow:0 20px 60px rgba(63,37,31,.11)}
