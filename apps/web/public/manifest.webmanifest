@@ -1,1 +1,12 @@
-{"name":"Mangalamm","short_name":"Mangalamm","start_url":"/","display":"standalone","background_color":"#fbf7f2","theme_color":"#a6535e","description":"Meaningful connections, made for marriage."}
+{
+  "name":"Mangalamm — Meaningful connections, made for marriage",
+  "short_name":"Mangalamm",
+  "start_url":"/dashboard",
+  "scope":"/",
+  "display":"standalone",
+  "orientation":"any",
+  "background_color":"#fbf7f2",
+  "theme_color":"#a6535e",
+  "description":"A private, verified matrimonial experience for people ready for a meaningful future.",
+  "icons":[{"src":"/icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}
