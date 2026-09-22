@@ -101,6 +101,7 @@ def upgrade():
 
 
 def downgrade():
+    bind = op.get_bind()
     op.drop_index("ix_audit_user_created", table_name="audit_events")
     op.drop_table("audit_events")
     op.drop_index("ix_messages_conversation_created", table_name="conversation_messages")
