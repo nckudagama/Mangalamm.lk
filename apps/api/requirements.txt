@@ -8,3 +8,4 @@ alembic==1.16.5
 PyJWT==2.10.1
 pwdlib[argon2]==0.2.1
 redis==6.4.0
+\nemail-validator==2.3.0\n
