@@ -17,10 +17,6 @@ function Brand() {
       <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-[13px] shadow-[0_8px_24px_rgba(166,83,94,.22)]">
         <img src="/branding/mangalamm-logo.png" alt="" className="h-full w-full" />
       </span>
-      <span>
-        <span className="block text-[20px] font-semibold leading-none tracking-[-.045em]">mangalamm<span className="text-[var(--rose)]">.</span></span>
-        <span className="mt-1 block text-[9px] tracking-[.22em] text-[var(--muted)]">මංගලම්</span>
-      </span>
     </Link>
   );
 }
