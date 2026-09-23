@@ -10,6 +10,7 @@ from .routes_consent import router as consent_router
 from .routes_discover import router as discover_router
 from .routes_interests import router as interests_router
 from .routes_messages import router as messages_router
+from .routes_dashboard import router as dashboard_router
 
 app = FastAPI(
     title="Mangalamm API",
@@ -37,6 +38,7 @@ app.include_router(consent_router)
 app.include_router(discover_router)
 app.include_router(interests_router)
 app.include_router(messages_router)
+app.include_router(dashboard_router)
 
 
 def health_payload():
