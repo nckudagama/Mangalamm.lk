@@ -7,7 +7,7 @@ function Logo() {
   return (
     <Link href="/" aria-label="Mangalamm home" className="group flex items-center gap-3">
       <span className="h-11 w-11 overflow-hidden rounded-[14px] shadow-[0_10px_28px_rgba(166,83,94,.18)]">
-        <img src="/icons/icon.svg" alt="" className="h-full w-full" />
+        <img src="/branding/mangalamm-logo.png" alt="" className="h-full w-full" />
       </span>
       <span className="leading-none">
         <span className="block text-[22px] font-semibold tracking-[-.04em]">mangalamm<span className="text-[#a6535e]">.</span></span>
