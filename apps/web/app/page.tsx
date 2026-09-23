@@ -53,7 +53,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="mt-8 flex flex-wrap gap-x-7 gap-y-2 font-sans text-xs text-[#756b69]">
-            <span>✓ {si ? "Privacy first" : "Privacy first"}</span><span>✓ {si ? "Verified members" : "Verified members"}</span><span>✓ {si ? "Mutual connection" : "Mutual connection"}</span>
+            <span>✓ {si ? "Privacy first" : "Privacy first"}</span><span>✓ {si ? "Privacy first" : "Privacy first"}</span><span>✓ {si ? "Mutual connection" : "Mutual connection"}</span>
           </div>
         </div>
 
