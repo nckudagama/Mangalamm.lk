@@ -44,7 +44,9 @@ export default function Dashboard() {
       </div>
     </div>
 
-    <div className="mt-6 rounded-[28px] border border-[var(--line)] bg-white p-6 shadow-soft"><div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between"><div><p className="font-sans text-[10px] uppercase tracking-[.22em] text-[var(--rose)]">Mangalamm Brain</p><h2 className="mt-2 text-3xl">Explore your compatibility signals.</h2><p className="mt-2 max-w-2xl font-sans text-sm leading-6 text-[var(--muted)]">See the 10 AI dimensions and adjust the AI ↔ Astrology balance from the default 60/40.</p></div><Link href="/matching" className="rounded-full bg-[var(--ink)] px-6 py-3 font-sans text-sm text-white">Open AI Matching →</Link></div></div>\n\n<div className="mt-6 grid grid-cols-3 gap-3 md:gap-5">
+    <div className="mt-6 rounded-[28px] border border-[var(--line)] bg-white p-6 shadow-soft"><div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between"><div><p className="font-sans text-[10px] uppercase tracking-[.22em] text-[var(--rose)]">Mangalamm Brain</p><h2 className="mt-2 text-3xl">Explore your compatibility signals.</h2><p className="mt-2 max-w-2xl font-sans text-sm leading-6 text-[var(--muted)]">See the 10 AI dimensions and adjust the AI ↔ Astrology balance from the default 60/40.</p></div><Link href="/matching" className="rounded-full bg-[var(--ink)] px-6 py-3 font-sans text-sm text-white">Open AI Matching →</Link></div></div>
+
+    <div className="mt-6 grid grid-cols-3 gap-3 md:gap-5">
       {[["Matches", summary.active_matches], ["Interests received", summary.received_interests], ["Interests sent", summary.sent_interests]].map(([label, value]) => (
         <div key={label} className="rounded-[24px] border border-[var(--line)] bg-white p-5 shadow-soft md:p-6">
           <p className="font-sans text-[10px] uppercase tracking-[.18em] text-[var(--rose)]">{label}</p>
