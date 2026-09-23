@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { api } from "../../lib/api";
 import AppShell from "../app-shell";
 
@@ -27,6 +28,7 @@ const labels: Record<string, string> = {
 };
 
 export default function Matching() {
+  const searchParams = useSearchParams();
   const [people, setPeople] = useState<Candidate[]>([]);
   const [selected, setSelected] = useState("");
   const [ai, setAi] = useState(60);
