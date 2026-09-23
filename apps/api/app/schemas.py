@@ -41,6 +41,8 @@ class ProfileIn(BaseModel):
     values: list[str] = Field(default_factory=list, max_length=30)
     preferred_age_min: Optional[int] = Field(default=None, ge=18, le=100)
     preferred_age_max: Optional[int] = Field(default=None, ge=18, le=100)
+    preferred_gender: Optional[str] = Field(default=None, max_length=40)
+    preferred_location: Optional[str] = Field(default=None, max_length=120)
 
     @field_validator("date_of_birth")
     @classmethod
