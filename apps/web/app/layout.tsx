@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "A private, thoughtful matrimonial experience built for meaningful relationships.",
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Mangalamm", statusBarStyle: "default" },
-  icons: { icon: "/icons/icon.svg", apple: "/icons/icon.svg" },
+  icons: { icon: "/branding/mangalamm-logo.png", apple: "/branding/mangalamm-logo.png" },
 };
 
 export const viewport: Viewport = {
