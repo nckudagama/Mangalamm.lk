@@ -51,6 +51,8 @@ def serialize_profile(p: Profile) -> dict:
         "values": metadata.get("values", []),
         "preferred_age_min": preferences.get("age_min"),
         "preferred_age_max": preferences.get("age_max"),
+        "preferred_gender": preferences.get("gender"),
+        "preferred_location": preferences.get("location"),
     }
 
 
@@ -85,6 +87,8 @@ def save_me(payload: ProfileIn, user=Depends(current_user), db: Session = Depend
         "preferences": {
             "age_min": payload.preferred_age_min,
             "age_max": payload.preferred_age_max,
+            "gender": payload.preferred_gender,
+            "location": payload.preferred_location,
         },
     }
     db.add(AuditEvent(user_id=user.id, event_type=AuditEventType.PROFILE_UPDATED, target_type="profile", target_id=str(p.id)))
