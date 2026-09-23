@@ -7,8 +7,18 @@ export const metadata: Metadata = {
   title: "Mangalamm — මංගලම්",
   description: "A private, thoughtful matrimonial experience built for meaningful relationships.",
   manifest: "/manifest.webmanifest",
-  appleWebApp: { capable: true, title: "Mangalamm", statusBarStyle: "default" },
-  icons: {\n    icon: [\n      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },\n      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },\n    ],\n    apple: "/icons/apple-touch-icon.png",\n  },
+  appleWebApp: {
+    capable: true,
+    title: "Mangalamm",
+    statusBarStyle: "default",
+  },
+  icons: {
+    icon: [
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/icons/apple-touch-icon.png",
+  },
 };
 
 export const viewport: Viewport = {
