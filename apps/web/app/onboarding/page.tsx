@@ -21,6 +21,8 @@ type Form = {
   values: string[];
   preferred_age_min: string;
   preferred_age_max: string;
+  preferred_gender: string;
+  preferred_location: string;
 };
 
 const initial: Form = {
@@ -39,6 +41,8 @@ const initial: Form = {
   values: [],
   preferred_age_min: "25",
   preferred_age_max: "35",
+  preferred_gender: "",
+  preferred_location: "",
 };
 
 const groups = {
@@ -63,6 +67,8 @@ export default function Onboarding() {
         children_count: p.children_count?.toString() || "",
         preferred_age_min: p.preferred_age_min?.toString() || current.preferred_age_min,
         preferred_age_max: p.preferred_age_max?.toString() || current.preferred_age_max,
+        preferred_gender: p.preferred_gender || current.preferred_gender,
+        preferred_location: p.preferred_location || current.preferred_location,
         interests: p.interests || [],
         lifestyle: p.lifestyle || [],
         values: p.values || [],
@@ -136,8 +142,9 @@ export default function Onboarding() {
             <div className="grid gap-4 sm:grid-cols-2">
               <input className="field" type="number" min="18" max="100" value={form.preferred_age_min} onChange={(e) => set("preferred_age_min", e.target.value)} placeholder="Minimum age" />
               <input className="field" type="number" min="18" max="100" value={form.preferred_age_max} onChange={(e) => set("preferred_age_max", e.target.value)} placeholder="Maximum age" />
+              <select className="field" value={form.preferred_gender} onChange={(e) => set("preferred_gender", e.target.value)}><option value="">Preferred gender (optional)</option><option>Woman</option><option>Man</option><option>Other</option></select>
             </div>
-            <input className="field" placeholder="Preferred location (optional)" />
+            <input className="field" value={form.preferred_location} onChange={(e) => set("preferred_location", e.target.value)} placeholder="Preferred location (optional)" />
             <textarea className="field min-h-28" placeholder="Important preferences / deal-breakers (kept as private profile notes for now)" />
           </>}
         </div>
