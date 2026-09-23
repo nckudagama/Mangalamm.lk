@@ -1,10 +1,11 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import PwaRegister from "./pwa-register";
+import { LanguageProvider } from "./language-provider";
 
 export const metadata: Metadata = {
-  title: "Mangalamm — Meaningful connections, made for marriage",
-  description: "A private, verified matrimonial experience for people ready for a meaningful future.",
+  title: "Mangalamm — මංගලම්",
+  description: "A private, thoughtful matrimonial experience built for meaningful relationships.",
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Mangalamm", statusBarStyle: "default" },
   icons: { icon: "/icons/icon.svg", apple: "/icons/icon.svg" },
@@ -13,11 +14,19 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
   viewportFit: "cover",
   themeColor: "#a6535e",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body><PwaRegister />{children}</body></html>;
+  return (
+    <html lang="si">
+      <body>
+        <LanguageProvider>
+          <PwaRegister />
+          {children}
+        </LanguageProvider>
+      </body>
+    </html>
+  );
 }
