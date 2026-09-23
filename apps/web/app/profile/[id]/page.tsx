@@ -47,7 +47,7 @@ export default function ProfileView() {
           <p className="mt-3 font-sans text-xs leading-5 text-[var(--muted)]">Compatibility is a data-based signal, not a guarantee. Photos and private contact details are not exposed on this view.</p>
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link href={"/matching?profile=" + p} className="rounded-2xl bg-[var(--ink)] px-5 py-3 font-sans text-sm text-white">Explore matching</Link>
+          <Link href={"/matching?profile=" + params.id} className="rounded-2xl bg-[var(--ink)] px-5 py-3 font-sans text-sm text-white">Explore matching</Link>
         </div>
       </div>
     </section>
