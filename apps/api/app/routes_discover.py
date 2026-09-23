@@ -36,12 +36,20 @@ def discover(
         db.query(Profile)
         .join(User, User.id == Profile.user_id)
         .filter(Profile.user_id != user.id, User.is_active.is_(True))
-        .filter(Profile.visibility.in_([Visibility.PUBLIC, Visibility.MATCH_ONLY, Visibility.MUTUAL_MATCH]))
+        .filter(Profile.visibility == Visibility.PUBLIC)
     )
     if location:
         q = q.filter(Profile.location.ilike(f"%{location}%"))
     if gender:
         q = q.filter(Profile.gender == gender)
+
+    # Respect the signed-in member's saved partner preference when available.
+    own = db.query(Profile).filter(Profile.user_id == user.id).first()
+    if own and not gender:
+        own_meta = own.ai_metadata or {}
+        preferred_gender = own_meta.get("preferences", {}).get("gender")
+        if preferred_gender:
+            q = q.filter(Profile.gender == preferred_gender)
     if age_min is not None:
         q = q.filter(Profile.date_of_birth <= date_for_age(age_min, 0))
     if age_max is not None:
