@@ -5,10 +5,17 @@ import AppShell from "../app-shell";
 import { api } from "../../lib/api";
 
 type Profile = { display_name?: string; profile_complete_pct?: number };
+type Summary = { profile_complete_pct: number; received_interests: number; active_matches: number; sent_interests: number };
 
 export default function Dashboard() {
   const [profile, setProfile] = useState<Profile>({});
-  useEffect(() => { api<Profile>("/api/v1/profiles/me").then(setProfile).catch(() => undefined); }, []);
+  const [summary, setSummary] = useState<Summary>({ profile_complete_pct: 0, received_interests: 0, active_matches: 0, sent_interests: 0 });
+  useEffect(() => {
+    Promise.all([
+      api<Profile>("/api/v1/profiles/me"),
+      api<Summary>("/api/v1/dashboard/summary"),
+    ]).then(([profileData, summaryData]) => { setProfile(profileData); setSummary(summaryData); }).catch(() => undefined);
+  }, []);
   const pct = profile.profile_complete_pct || 0;
   return <AppShell><main className="mx-auto max-w-7xl px-5 py-8 md:px-10 md:py-12">
     <section className="relative overflow-hidden rounded-[34px] bg-[#231f20] px-7 py-9 text-white shadow-[0_30px_80px_rgba(55,34,30,.16)] md:px-12 md:py-12">
@@ -35,6 +42,15 @@ export default function Dashboard() {
         <p className="mt-2 font-sans text-sm leading-6 text-[var(--muted)]">Visibility and AI consent are separate choices.</p>
         <Link href="/settings" className="mt-5 inline-block font-sans text-xs font-semibold underline underline-offset-4">Manage controls →</Link>
       </div>
+    </div>
+
+    <div className="mt-6 grid grid-cols-3 gap-3 md:gap-5">
+      {[["Matches", summary.active_matches], ["Interests received", summary.received_interests], ["Interests sent", summary.sent_interests]].map(([label, value]) => (
+        <div key={label} className="rounded-[24px] border border-[var(--line)] bg-white p-5 shadow-soft md:p-6">
+          <p className="font-sans text-[10px] uppercase tracking-[.18em] text-[var(--rose)]">{label}</p>
+          <p className="mt-2 text-3xl md:text-4xl">{value}</p>
+        </div>
+      ))}
     </div>
 
     <div className="mt-10 flex items-end justify-between"><div><p className="font-sans text-[10px] uppercase tracking-[.22em] text-[var(--rose)]">Your next step</p><h2 className="mt-2 text-3xl">When you’re ready, discover.</h2></div><Link href="/discover" className="hidden rounded-full border border-[var(--line)] bg-white px-5 py-2.5 font-sans text-xs md:block">View discovery</Link></div>
