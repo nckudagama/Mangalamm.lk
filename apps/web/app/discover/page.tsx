@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { api } from "../../lib/api";
+import Link from "next/link";
 import AppShell from "../app-shell";
 
 type P = { id: string; display_name: string; age?: number; gender?: string; location?: string; education?: string; profession?: string; bio?: string; profile_complete_pct?: number };
@@ -19,7 +20,7 @@ export default function Discover() {
     {loading?<p className="mt-12 font-sans text-sm text-[var(--muted)]">Finding people…</p>:<div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {people.map(p=><article key={p.id} className="group overflow-hidden rounded-[30px] border border-[var(--line)] bg-white shadow-soft transition duration-300 hover:-translate-y-1">
         <div className="relative flex h-56 items-end overflow-hidden bg-[#eadbd2]"><div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_25%,#f8e8dc,transparent_28%),linear-gradient(145deg,#d6b4aa,#b66c71_55%,#7c424b)] opacity-90"/><div className="relative m-5 flex h-14 w-14 items-center justify-center rounded-full border border-white/60 bg-white/20 text-2xl text-white backdrop-blur">{p.display_name?.charAt(0)||"M"}</div><span className="absolute right-5 top-5 rounded-full bg-white/85 px-3 py-1.5 font-sans text-[9px] uppercase tracking-[.14em] text-[var(--rose)]">Verified member</span></div>
-        <div className="p-6"><div className="flex items-start justify-between gap-3"><h2 className="text-2xl tracking-[-.02em]">{p.display_name}{p.age?`, ${p.age}`:""}</h2></div><p className="mt-2 font-sans text-xs text-[var(--muted)]">{[p.location,p.profession].filter(Boolean).join(" · ")||"Sri Lanka"}</p><p className="mt-4 line-clamp-3 font-sans text-sm leading-6 text-[var(--muted)]">{p.bio||"A new Mangalamm member."}</p>{sent[p.id]?<div className="mt-5 rounded-2xl bg-[var(--cream)] py-3 text-center font-sans text-sm text-[#6e4a4e]">{sent[p.id]}</div>:<button onClick={()=>interest(p.id)} className="mt-5 w-full rounded-2xl bg-[var(--ink)] py-3.5 font-sans text-sm text-white transition hover:bg-[#3a3435]">I’m interested <span className="ml-1 text-[#e8b2ad]">♡</span></button>}</div>
+        <div className="p-6"><div className="flex items-start justify-between gap-3"><h2 className="text-2xl tracking-[-.02em]">{p.display_name}{p.age?`, ${p.age}`:""}</h2></div><p className="mt-2 font-sans text-xs text-[var(--muted)]">{[p.location,p.profession].filter(Boolean).join(" · ")||"Sri Lanka"}</p><p className="mt-4 line-clamp-3 font-sans text-sm leading-6 text-[var(--muted)]">{p.bio||"A new Mangalamm member."}</p><Link href={"/profile/"+p.id} className="mt-4 inline-block font-sans text-xs font-semibold uppercase tracking-[.14em] text-[var(--rose)]">View profile →</Link>{sent[p.id]?<div className="mt-5 rounded-2xl bg-[var(--cream)] py-3 text-center font-sans text-sm text-[#6e4a4e]">{sent[p.id]}</div>:<button onClick={()=>interest(p.id)} className="mt-5 w-full rounded-2xl bg-[var(--ink)] py-3.5 font-sans text-sm text-white transition hover:bg-[#3a3435]">I’m interested <span className="ml-1 text-[#e8b2ad]">♡</span></button>}</div>
       </article>)}
     </div>}
   </main></AppShell>;
